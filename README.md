@@ -2,6 +2,24 @@
 
 # PINN-based Parameter Inversion for Microbeam Resonators
 
+## 从这里开始 / Start here
+
+本仓库保存微梁谐振器参数反演的研究代码、数据、模型和结果图，主要通过 Notebook 阅读与实验。
+
+| 实验 | 入口 | 随仓数据与结果 |
+| --- | --- | --- |
+| 品质因子 Q 反演 | [Q_factor/PINN_Network_Q.ipynb](Q_factor/PINN_Network_Q.ipynb)；[Python 脚本](Q_factor/PINN_Network_Q.py) | `Q_factor/data/test_Q_45.h5`、`Q_factor/model/`、`Q_factor/results/` |
+| 梁宽、梁长反演 | [wt_lt/PINN_wt_lt.ipynb](wt_lt/PINN_wt_lt.ipynb) | `wt_lt/data/wt_lt_big.h5`、`wt_lt/model/`、`wt_lt/viz/` |
+| 数据生成过程 | [Q 数据生成](Q_factor/DataGenerator_small_Q.ipynb)、[尺寸数据生成](wt_lt/DataGenerator_wt_lt.ipynb) | 可先阅读现有数据，再决定是否重新生成 |
+
+第一次阅读可以直接查看 Notebook 中的已有输出及本页结果图，无需先训练。若要复现实验：
+
+- 将工作目录设为对应的 `Q_factor/` 或 `wt_lt/`，代码中的 `./data/`、`model/`、`results/` 等路径相对于该目录。
+- 代码涉及 NumPy、pandas（HDF5 读写需要 PyTables）、PyTorch、scikit-learn、Matplotlib；不同 Notebook 还使用 SymPy、SciPy、ipywidgets 等。当前未提供锁定的统一运行环境，运行前按所选 Notebook 的导入项准备依赖。
+- 训练和数据生成单元会写入数据、模型或结果文件；保留原始结果，在副本中逐节运行。训练脚本不是只读推断入口。
+
+**English:** This is a notebook-based research repository. Start with the Q-factor or beam-dimension notebook linked above, and inspect the saved outputs before retraining. Run each experiment from its own directory; dependencies are not yet pinned, and training/data-generation cells write local artifacts. The results below document the included experiments, rather than a newly reproduced run on your environment.
+
 
 ##  1.PINN4MEMS - 项目背景
 
